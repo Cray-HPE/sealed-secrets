@@ -1,9 +1,25 @@
-apiVersion: v1
-appVersion: 1.10.1
-# loftsman currently uses the name of the chart as the name of the release
-# we want the name of the release to be sealed-secrets to prevent
-# having to pass in the custom name to every `kubeseal` cli call
+apiVersion: v2
 name: sealed-secrets
-description: Cray Sealed Secrets
-home: "cloud/cray-charts"
 version: 0.1.0
+description: Cray Sealed Secrets
+keywords:
+  - sealed-secrets
+home: https://github.com/Cray-HPE/sealed-secrets
+dependencies:
+  - name: sealed-secrets
+    version: 1.10.1
+    repository: "@stable"
+appVersion: 1.10.1
+annotations:
+  artifacthub.io/changes: |
+    - kind: security
+      description: Updated images to CSM patched versions
+      links:
+        - name: Github Issue
+          url: https://github.com/Cray-HPE/sealed-secrets/issues/4
+        - name: Github PR
+          url: https://github.com/Cray-HPE/sealed-secrets/pull/3
+  artifacthub.io/images: |
+    - name: sealed-secrets-controller
+      image: artifactory.algol60.net/csm-docker/stable/quay.io/bitnami/sealed-secrets-controller:v0.12.1
+  artifacthub.io/license: MIT

@@ -1,6 +1,6 @@
 sealed-secrets:
   image:
-    repository: quay.io/bitnami/sealed-secrets-controller
+    repository: artifactory.algol60.net/csm-docker/stable/quay.io/bitnami/sealed-secrets-controller
     tag: v0.12.1
     pullPolicy: IfNotPresent
 
