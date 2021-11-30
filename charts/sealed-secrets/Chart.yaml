@@ -1,0 +1,30 @@
+apiVersion: v2
+name: sealed-secrets
+version: 0.2.0
+description: Cray Sealed Secrets
+keywords:
+  - sealed-secrets
+home: https://github.com/Cray-HPE/sealed-secrets
+dependencies:
+  - name: sealed-secrets
+    version: 1.10.1
+    repository: https://charts.helm.sh/stable
+maintainers:
+  - name: kburns-hpe
+  - name: brantk-hpe
+  - name: rnoska-hpe
+  - name: bo-quan
+appVersion: 1.10.1  # Tracks sealed-secrets child chart
+annotations:
+  artifacthub.io/changes: |
+    - kind: security
+      description: Updated images to CSM patched versions
+      links:
+        - name: Github Issue
+          url: https://github.com/Cray-HPE/sealed-secrets/issues/4
+        - name: Github PR
+          url: https://github.com/Cray-HPE/sealed-secrets/pull/3
+  artifacthub.io/images: |
+    - name: sealed-secrets-controller
+      image: artifactory.algol60.net/csm-docker/stable/quay.io/bitnami/sealed-secrets-controller:v0.12.1
+  artifacthub.io/license: MIT
