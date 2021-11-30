@@ -14,24 +14,22 @@ pipeline {
         NAME = "sealed-secrets"
         DESCRIPTION = "Deploys the sealed secrets operator."
         IS_STABLE = getBuildIsStable()
-        CHART_VERSION = getChartVersion(name: env.NAME, isStable: env.IS_STABLE)
     }
 
     stages {
         stage("Build") {
-            parallel {
-                stage('Chart') {
-                    steps {
-                        sh "make chart"
-                    }
-                }
+            environment {
+                CHART_VERSIONS = getChartVersion(name: "sealed-secrets", chartDirectory: "charts", isStable: env.IS_STABLE)
+            }
+            steps {
+                sh "make"
             }
         }
 
         stage('Publish ') {
             steps {
                 script {
-                    publishCsmHelmCharts(component: env.NAME, chartsPath: "${WORKSPACE}/kubernetes/.packaged", isStable: env.IS_STABLE)
+                    publishCsmHelmCharts(component: env.NAME, chartsPath: "${WORKSPACE}/packages", isStable: env.IS_STABLE)
                 }
             }
         }
