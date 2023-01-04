@@ -23,7 +23,7 @@
 #
 apiVersion: v2
 name: sealed-secrets
-version: 0.3.0
+version: 0.4.0
 description: Cray Sealed Secrets
 keywords:
   - sealed-secrets
@@ -49,5 +49,5 @@ annotations:
           url: https://github.com/Cray-HPE/sealed-secrets/pull/3
   artifacthub.io/images: |
     - name: sealed-secrets-controller
-      image: artifactory.algol60.net/csm-docker/stable/docker.io/bitnami/sealed-secrets-controller:v0.12.1
+      image: artifactory.algol60.net/csm-docker/stable/ghcr.io/bitnami-labs/sealed-secrets-controller:v0.19.3
   artifacthub.io/license: MIT
