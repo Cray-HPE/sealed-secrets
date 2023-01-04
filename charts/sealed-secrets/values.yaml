@@ -23,8 +23,8 @@
 #
 sealed-secrets:
   image:
-    repository: artifactory.algol60.net/csm-docker/stable/docker.io/bitnami/sealed-secrets-controller
-    tag: v0.12.1
+    repository: artifactory.algol60.net/csm-docker/stable/ghcr.io/bitnami-labs/sealed-secrets-controller
+    tag: v0.19.3
     pullPolicy: IfNotPresent
 
   resources: {}
