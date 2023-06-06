@@ -23,7 +23,7 @@
 #
 apiVersion: v2
 name: sealed-secrets
-version: 0.4.0
+version: 0.4.1
 description: Cray Sealed Secrets
 keywords:
   - sealed-secrets
