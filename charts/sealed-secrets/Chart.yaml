@@ -23,21 +23,23 @@
 #
 apiVersion: v2
 name: sealed-secrets
-version: 0.4.0
+version: 0.4.1
 description: Cray Sealed Secrets
 keywords:
   - sealed-secrets
 home: https://github.com/Cray-HPE/sealed-secrets
 dependencies:
   - name: sealed-secrets
-    version: 1.10.1
-    repository: https://charts.helm.sh/stable
+    # note: https://github.com/helm/charts/commits/master/stable/sealed-secrets is deprecated now, we're super behind this is the new versioning scheme
+#    version: 1.0.4
+    version: 1.4.1
+    repository: https://charts.bitnami.com/bitnami
 maintainers:
   - name: kburns-hpe
   - name: brantk-hpe
   - name: rnoska-hpe
   - name: bo-quan
-appVersion: 1.10.1  # Tracks sealed-secrets child chart
+appVersion: 0.21.0  # Tracks sealed-secrets child chart
 annotations:
   artifacthub.io/changes: |
     - kind: security

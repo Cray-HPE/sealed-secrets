@@ -13,6 +13,7 @@ jobs:
     with:
       lint-charts: ${{ github.event_name == 'pull_request' }}
       test-charts: false
+      snyk_exclude_app_vulns: true
       scan-chart-snyk-args: "--severity-threshold=high --policy-path=charts/.snyk"
     secrets:
       snyk-token: ${{ secrets.SNYK_TOKEN }}

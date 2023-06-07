@@ -23,8 +23,9 @@
 #
 sealed-secrets:
   image:
-    repository: artifactory.algol60.net/csm-docker/stable/ghcr.io/bitnami-labs/sealed-secrets-controller
-    tag: v0.19.3
+    registry: artifactory.algol60.net/csm-docker/stable/docker.io
+    repository: bitnami/sealed-secrets
+    tag: 0.21.0-scratch-r0
     pullPolicy: IfNotPresent
 
   resources: {}
@@ -55,8 +56,6 @@ sealed-secrets:
     create: true
     # crd.keep: `true` if the sealed secret CRD should be kept when the chart is deleted
     keep: true
-
-  networkPolicy: false
 
   securityContext:
     # securityContext.runAsUser defines under which user the operator Pod and its containers/processes run.
