@@ -23,7 +23,7 @@
 #
 apiVersion: v2
 name: sealed-secrets
-version: 0.5.1
+version: 0.5.2
 description: Cray Sealed Secrets
 keywords:
   - sealed-secrets
@@ -37,6 +37,7 @@ maintainers:
   - name: brantk-hpe
   - name: rnoska-hpe
   - name: bo-quan
+  - name: arka-pramanik-hpe
 appVersion: 0.28.0  # Tracks sealed-secrets child chart
 annotations:
   artifacthub.io/changes: |

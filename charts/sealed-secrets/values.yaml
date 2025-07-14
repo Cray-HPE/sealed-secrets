@@ -66,3 +66,9 @@ sealed-secrets:
   podLabels: {}
 
   priorityClassName: ""
+
+kubectl:
+  image:
+    repository: artifactory.algol60.net/csm-docker/stable/docker-kubectl
+    tag: 1.24.17
+    pullPolicy: IfNotPresent
