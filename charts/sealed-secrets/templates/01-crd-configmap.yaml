@@ -31,4 +31,4 @@ metadata:
     helm.sh/hook-delete-policy: before-hook-creation,hook-succeeded
 data:
   bitnami.com_sealedsecrets.yaml: |-
-    {{- .Files.Get "charts/sealed-secrets/crds/bitnami.com_sealedsecrets.yaml" | nindent 4 }}
+    {{- .Files.Get "files/bitnami.com_sealedsecrets.yaml" | nindent 4 }}
