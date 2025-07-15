@@ -50,9 +50,9 @@ spec:
           imagePullPolicy: "{{ .Values.kubectl.image.pullPolicy }}"
           volumeMounts:
            - name: "sealed-secrets-crd-configmap"
-             mountPath: /tmp
+             mountPath: /crds
           command:
             - '/bin/sh'
           args:
             - "-c"
-            - kubectl apply -f /tmp/bitnami.com_sealedsecrets.yaml
+            - kubectl apply -f /crds/bitnami.com_sealedsecrets.yaml

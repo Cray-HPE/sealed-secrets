@@ -27,18 +27,15 @@ copy-crds:
 	@echo "Copying CRDs from dependency chart to files directory..."
 	@mkdir -p charts/sealed-secrets/files
 	@cd charts/sealed-secrets/charts && \
-	if ls sealed-secrets-*.tgz > /dev/null 2>&1; then \
-		echo "Extracting dependency chart to access CRDs..."; \
-		tar -xzf sealed-secrets-*.tgz; \
-		if [ -d "sealed-secrets/crds" ]; then \
-			cp -r sealed-secrets/crds/* ../files/; \
+	if [ -f sealed-secrets-*.tgz ]; then \
+		echo "Extracting dependency chart CRDs..."; \
+		if tar -xzf sealed-secrets-*.tgz -C ../files --strip-components 2 sealed-secrets/crds/bitnami.com_sealedsecrets.yaml; then \
 			echo "CRDs copied successfully"; \
 		else \
-			echo "Warning: CRDs directory not found in extracted dependency chart"; \
+			echo "Warning: Failed to extract CRDs from dependency chart"; \
 		fi; \
-		rm -rf sealed-secrets; \
 	else \
-		echo "Warning: Dependency chart tgz file not found"; \
+		echo "Warning: Dependency chart sealed-secrets-*.tgz file not found"; \
 	fi
 
 lint:
