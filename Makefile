@@ -1,4 +1,4 @@
-# Copyright 2021 Hewlett Packard Enterprise Development LP
+# Copyright 2021,2025 Hewlett Packard Enterprise Development LP
 
 CHART_METADATA_IMAGE ?= artifactory.algol60.net/csm-docker/stable/chart-metadata
 YQ_IMAGE ?= artifactory.algol60.net/docker.io/mikefarah/yq:4
@@ -21,6 +21,22 @@ helm:
 
 dep-up:
 	CMD="dep up charts/sealed-secrets" $(MAKE) helm
+	$(MAKE) copy-crds
+
+copy-crds:
+	@echo "Copying CRDs from dependency chart to files directory..."
+	@mkdir -p charts/sealed-secrets/files
+	@cd charts/sealed-secrets/charts && \
+	if [ -f sealed-secrets-*.tgz ]; then \
+		echo "Extracting dependency chart CRDs..."; \
+		if tar -xzf sealed-secrets-*.tgz -C ../files --strip-components 2 sealed-secrets/crds/bitnami.com_sealedsecrets.yaml; then \
+			echo "CRDs copied successfully"; \
+		else \
+			echo "Warning: Failed to extract CRDs from dependency chart"; \
+		fi; \
+	else \
+		echo "Warning: Dependency chart sealed-secrets-*.tgz file not found"; \
+	fi
 
 lint:
 	CMD="lint charts/sealed-secrets" $(MAKE) helm
